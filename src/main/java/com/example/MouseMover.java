@@ -1,9 +1,8 @@
 package com.example;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
 public class MouseMover {
@@ -44,7 +43,7 @@ public class MouseMover {
 
         int moveAmount = 1;
 
-        // Main functionality of the mouse mover
+        // Mouse mover / key presser logic
         try {
             Robot robot = new Robot();
             while (true) {
@@ -55,8 +54,15 @@ public class MouseMover {
                 // Move the mouse by 1 pixel
                 robot.mouseMove(x + moveAmount, y);
 
-                // Wait for 2 minutes before repeating
-                TimeUnit.MINUTES.sleep(2);
+                // Simulate a key press
+                robot.keyPress(KeyEvent.VK_SCROLL_LOCK);
+                robot.keyRelease(KeyEvent.VK_SCROLL_LOCK);
+
+                // Wait for a random time between 1.5 to 2 minutes
+                // Get integer between 90 and 120 seconds
+                int waitTime = (int) (Math.random() * 30 + 90);
+                TimeUnit.SECONDS.sleep(waitTime);
+                System.out.println("Mouse moved after " + waitTime + " seconds");
 
                 // Flip the direction of the mouse movement
                 moveAmount = moveAmount * -1;
