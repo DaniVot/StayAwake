@@ -62,7 +62,6 @@ public class MouseMover {
                 // Get integer between 90 and 120 seconds
                 int waitTime = (int) (Math.random() * 30 + 90);
                 TimeUnit.SECONDS.sleep(waitTime);
-                System.out.println("Mouse moved after " + waitTime + " seconds");
 
                 // Flip the direction of the mouse movement
                 moveAmount = moveAmount * -1;
